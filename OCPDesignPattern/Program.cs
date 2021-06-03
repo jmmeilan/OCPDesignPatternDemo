@@ -8,7 +8,7 @@ namespace OCPDesignPattern
     {
         static void Main(string[] args)
         {
-            List<PersonModel> applicants = new List<PersonModel>
+            List<IApplicantModel> applicants = new List<IApplicantModel>
             {
                 new PersonModel { FirstName = "Tim", LastName = "Corey" },
                 new PersonModel { FirstName = "Sue", LastName = "Storm" },
@@ -16,11 +16,10 @@ namespace OCPDesignPattern
             };
 
             List<EmployeeModel> employees = new List<EmployeeModel>();
-            Accounts accountProcessor = new Accounts();
 
             foreach (var person in applicants)
             {
-                employees.Add(accountProcessor.Create(person));
+                employees.Add(person.AccountProcessor.Create(person));
             }
 
             foreach (var emp in employees)
